@@ -1,0 +1,2 @@
+john,password,john@email.com
+bolabanj,dolapo,dolapoolabanji7@gmail.com
