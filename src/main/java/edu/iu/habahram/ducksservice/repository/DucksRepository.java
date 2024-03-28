@@ -40,6 +40,10 @@ public class DucksRepository {
                 StandardOpenOption.APPEND);
     }
     public int add(DuckData duckData) throws IOException {
+        File file  = new File(DATABASE_NAME);
+        if(!file.exists()) {
+            file.createNewFile();
+        }
         List<DuckData> ducks = findAll();
         int maxId = 0;
         for (int i = 0; i < ducks.size(); i++) {
@@ -49,6 +53,7 @@ public class DucksRepository {
         }
         int id = maxId + 1;
         Path path = Paths.get(DATABASE_NAME);
+
         String data = duckData.toLine(id);
         appendToFile(path, data + NEW_LINE);
         return id;
